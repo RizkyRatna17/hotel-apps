@@ -12,6 +12,11 @@ Route::get('login', [\App\Http\Controllers\LoginController::class, 'login'])->na
 Route::post('login_action', [\App\Http\Controllers\LoginController::class, 'loginAction'])->name('login_action');
 
 Route::resource('dashboard', App\Http\Controllers\DashboardController::class); //untuk mengakses dashboard dan halaman resource lainnya
+Route::resource('user', App\Http\Controllers\UserController::class);
+Route::resource('categories', App\Http\Controllers\CategoriesController::class);
+Route::resource('room', App\Http\Controllers\RoomController::class);
+
+
 
 Route::get("call_name", [App\Http\Controllers\BelajarController::class, 'getCallName']);
 Route::get("tambah", [App\Http\Controllers\BelajarController::class, 'tambah'])->name('tambah'); //jika pake route ditambah nama
