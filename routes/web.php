@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GuestController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -15,7 +16,18 @@ Route::resource('dashboard', App\Http\Controllers\DashboardController::class); /
 Route::resource('user', App\Http\Controllers\UserController::class);
 Route::resource('categories', App\Http\Controllers\CategoriesController::class);
 Route::resource('room', App\Http\Controllers\RoomController::class);
+Route::resource('reservation', App\Http\Controllers\ReservationsController::class);
 
+Route::get('get-room-by-category/{id}', [App\Http\Controllers\ReservationsController::class, 'getRoomByCategory'])->name('get-room-by-category');
+
+
+
+
+
+Route::get("guestinformation", [GuestController::class, "index"]);
+Route::get("guestinformation/create", [GuestController::class, "create"]);
+Route::post("guestinformation/store", [GuestController::class, "store"])->name('guest.store');
+Route::get("guestinformation/edit/{id}", [GuestController::class, "edit"])->name("guest.edit");
 
 
 Route::get("call_name", [App\Http\Controllers\BelajarController::class, 'getCallName']);

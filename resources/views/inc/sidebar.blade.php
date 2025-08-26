@@ -31,11 +31,8 @@
               <i class="bi bi-circle"></i><span>Kamar</span>
             </a>
           </li>
-          <li>
-            <a href="components-breadcrumbs.html">
-              <i class="bi bi-circle"></i><span>Breadcrumbs</span>
-            </a>
-          </li>
+
+
           <li>
             <a href="components-buttons.html">
               <i class="bi bi-circle"></i><span>Buttons</span>
@@ -89,6 +86,18 @@
         </ul>
       </li><!-- End Components Nav -->
 
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url('guestinformation')}}">
+          <i class="bi bi-person"></i>
+          <span>Guest Information</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url('reservation')}}">
+          <i class="bi bi-person"></i>
+          <span>Reservasi</span>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>

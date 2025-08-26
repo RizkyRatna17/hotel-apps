@@ -21,7 +21,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Nama *</label>
-                        <input type="text" name="name" class="form-control" placeholder="Masukkan nama pengguna" required>
+                        <input type="text" name="name" class="form-control" placeholder="Masukkan nama kamar" required>
                     </div>
                      <div class="mb-3">
                         <label for="" class="form-label">Harga *</label>
