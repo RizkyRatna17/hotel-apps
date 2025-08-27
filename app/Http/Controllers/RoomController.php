@@ -85,16 +85,17 @@ class RoomController extends Controller
             'facility' => $request->facility,
             'description' => $request->description,
         ];
+
         $room = Rooms::find($id);
 
         if ($request->hasFile('image_cover')) {
             if ($room->image_cover && Storage::disk('public')->exists($room->image_cover)) {
                 Storage::disk('public')->delete($room->image_cover);
-
             }
-            $data['image_cover'] = $request->file('image_cover')->store('rooms', 'public');
 
+            $data['image_cover'] = $request->file('image_cover')->store('rooms', 'public');
         }
+
         $room->update($data);
         return redirect()->to('room');
     }

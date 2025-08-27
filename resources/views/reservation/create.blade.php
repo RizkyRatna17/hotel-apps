@@ -17,7 +17,7 @@
                     </div>
                        <div class="mb-3">
                         <label for="" class="form-label">Telpon/Hp</label>
-                        <input type="number" name="phone" class="form-control" placeholder="Masukkan No Telp">
+                        <input type="number" name="guest_phone" class="form-control" placeholder="Masukkan No Telp">
                     </div>
                      <div class="mb-3">
                         <label for="" class="form-label">Kategori Kamar *</label>
@@ -38,6 +38,10 @@
                         </select>
                     </div>
                      <div class="mb-3">
+                        <label for="" class="form-label">Check In *</label>
+                        <input type="date" id="checkin" name="guest_check_in" class="form-control" placeholder="Masukkan tanggal check in">
+                    </div>
+                     <div class="mb-3">
                         <label for="" class="form-label">Metode Bayar *</label>
                         <select name="payment_method" id="" class="form-control">
                             <option value="cc">Credit Card</option>
@@ -52,7 +56,7 @@
                         <input type="email" name="guest_email" class="form-control" placeholder="Masukkan email">
                     </div>     <div class="mb-3">
                         <label for="" class="form-label">Jumlah Tamu</label>
-                        <select name="guest_qty" id="" class="form-control">
+                        <select name=" guest_qty" id="" class="form-control">
                             <option value="1">1 Tamu</option>
                             <option value="2">2 Tamu</option>
                             <option value="3">3 Tamu</option>
@@ -70,28 +74,38 @@
                         <label for="" class="form-label">Note </label>
                         <textarea name="guest_note" id="" class="form-control"></textarea>
                     </div>
+                      <div class="mb-3">
+                        <label for="" class="form-label">Check out*</label>
+                        <input type="date" id="checkout" name="guest_check_out" class="form-control" placeholder="Masukkan tanggal check out"S>
+                    </div>
+
                     <div class="card bg-light">
                        <div class="card-body">
                         <h6 class="card-title">Rangkuman Pembayaran</h6>
                         <div class="d-flex justify-content-between">
                             <span>Harga Kamar (per malam)</span>
                             <span id="roomRate">Rp.0</span>
+                            <input type="hidden" id="roomRateVal">
                         </div>
                         <div class="d-flex justify-content-between">
                             <span>Berapa Malam</span>
                             <span id="totalNight">0</span>
+                            <input type="hidden" id="totalNightVal">
                         </div>
                         <div class="d-flex justify-content-between">
                             <span>Subtotal</span>
                             <span id="subtotal">Rp.0</span>
+                             <input type="hidden" id="subTotalVal">
                         </div>
                           <div class="d-flex justify-content-between">
                             <span>Tax (10%)</span>
                             <span id="tax">Rp.0</span>
+                             <input type="hidden" id="taxVal">
                         </div>
                           <div class="d-flex justify-content-between">
                             <span>Grand Total</span>
-                            <span id="totalAmout">Rp.0</span>
+                            <span id="totalAmount">Rp.0</span>
+                             <input type="hidden" id="totalAmountVal">
                         </div>
 
                     </div>
@@ -99,14 +113,14 @@
 
                     </div>
 
-                     <div class="mb-3">
+                     {{-- <div class="mb-3">
                         <label for="" class="form-label">Gambar *</label>
                         <input type="file" name="image_cover" required>
-                    </div>
+                    </div> --}}
 
                     <div class="mb-3">
-                        <button class="btn btn-primary">Simpan</button>
-                        <a href="{{url()->previous()}}" class="text-muted"></a>
+                        <button class="btn btn-primary" id="save" type="button">Simpan</button>
+                        <a href="{{url()->previous()}}" class="text-muted">Kembali</a>
                     </div>
                 </form>
 
