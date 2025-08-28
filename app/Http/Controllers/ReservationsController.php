@@ -6,15 +6,40 @@ use Illuminate\Http\Request;
 use App\Models\Reservations;
 use App\Models\Rooms;
 use App\Models\Categories;
+use Carbon\Carbon;
 
 class ReservationsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function createReservationNumber()
+    {
+        //RSV-TODAY-0001
+        $code_format = "RSV";
+        $today = Carbon::now()->format('Ymd');//outputnya= 20250828
+        $prefix = $code_format . "-" . $today . "-";
+        $lastReservation = Reservations::whereDate('created_at', Carbon::t())
+            ->orderBy('id', 'desc')->first();
+        if ($lastReservation) {
+            $lastNumber = substr($lastReservation->reservation_number, -3);
+            //$lastNumber = $lastResevation->id; //4
+            $newNumber = str_pad($lastNumber, 3, "0", STR_PAD_LEFT);
+        } else {
+            $newNumber = "001";
+        }
+        $reservation_number = $prefix . $newNumber;
+        return $reservation_number;
+    }
+
+
+
+
+
+
     public function index()
     {
-        $datas = Reservations::orderBy('id', 'DESC')->get();
+        $datas = Reservations::with('room')->orderBy('id', 'DESC')->get();
         $title = 'Data Reservasi';
         return view('reservation.index', compact('datas', 'title'));
     }
@@ -24,8 +49,10 @@ class ReservationsController extends Controller
      */
     public function create()
     {
+        $reservation_number = $this->createReservationNumber();
+
         $categories = Categories::get();
-        return view('reservation.create', compact('categories'));
+        return view('reservation.create', compact('categories', 'reservation_number'));
     }
 
     /**
@@ -65,6 +92,7 @@ class ReservationsController extends Controller
                 // 'totalNight' => $request->totalNight,
                 'subtotal' => $request->subtotal,
                 'totalAmount' => $request->totalAmount,
+                'isreserve' => 1,
                 // 'roomRate' => $request->roomRate,
             ];
 

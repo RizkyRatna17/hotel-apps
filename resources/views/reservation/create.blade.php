@@ -10,6 +10,12 @@
                 <form action="{{route('reservation.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
+                         <div class="col-md-12">
+                            <div class="mb-3">
+                        <label for="" class="form-label">No Reservasi *</label>
+                        <input type="text" name="reservation_number" class="form-control" placeholder="Masukkan No Reservasi" value="{{$reservation_number ?? ''}}" readonly>
+                    </div>
+                </div>
                         <div class="col-lg-6">
                             <div class="mb-3">
                         <label for="" class="form-label">Nama Tamu *</label>
@@ -128,5 +134,30 @@
         </div>
     </div>
 </div>
+<!-- Button trigger modal -->
 
+
+<!-- Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <h4 class="mb-3">Reservasi Berhasil</h4>
+       <p class="text-muted mb-4">
+        Nomor Reservasi : <strong id="reservationNumber">#</strong><br>
+       </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">
+            <i class="bi bi-print"></i> Print Confirmation
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
